@@ -1,0 +1,155 @@
+/* src/app/globals.css */
+
+/* 1. SINTAXIS DE TAILWIND CSS */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+/* 2. DEFINICIÓN DE VARIABLES GLOBALES */
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+
+    --verde: #39ff14;
+    --celeste: #00bfff;
+
+    --ultimate-shadow: 0 0 5px var(--celeste), 0 0 25px var(--verde), 0 0 50px var(--celeste);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+
+/* ----------------------------------------------------------------------- */
+/* --- ESTILOS DE BOTONES --- */
+/* ----------------------------------------------------------------------- */
+.btn {
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-glow {
+  background-color: var(--verde);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--foreground);
+}
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-ultimate-glow {
+    background: linear-gradient(135deg, var(--celeste), var(--verde));
+    color: #000;
+    border: none;
+    border-radius: 9999px;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    box-shadow: var(--ultimate-shadow);
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+.btn-ultimate-glow:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 10px var(--celeste), 0 0 35px var(--verde), 0 0 70px var(--celeste);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--verde);
+    border: 2px solid var(--verde);
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-secondary:hover {
+    background: rgba(57, 255, 20, 0.1);
+    color: #fff;
+}
+
+
+/* ----------------------------------------------------------------------- */
+/* --- ESTILOS DEL CARRUSEL (FINAL Y CORREGIDO) --- */
+/* ----------------------------------------------------------------------- */
+@keyframes belt {
+  0% {
+    transform: translateX(0); /* 🚨 LÍNEA 98 CORREGIDA */
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+    display: flex;
+    gap: 26px;
+    padding: 8px 12px;
+    animation: belt 28s linear infinite;
+    white-space: nowrap;
+}
+
+.belt-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.02)
+    );
+    margin-bottom: 16px;
+}
+
+.belt-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+}
+.belt-item {
+    font-size: 0.95rem;
+    color: var(--celeste);
+}
+
+
+/* ----------------------------------------------------------------------- */
+/* --- ESTILOS DEL CONTENEDOR DEL HERO --- */
+/* ----------------------------------------------------------------------- */
+.hero-section-container {
+  background: #000000;
+  position: relative;
+}
+
+.hero-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content h1 {
+    margin: 14px 0 8px;
+    font-size: 2.8rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+}

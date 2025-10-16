@@ -1,0 +1,104 @@
+/* Sintaxis correcta para Tailwind CSS v4+ */
+@import "tailwindcss";
+
+/* Definición de variables globales */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Colores personalizados */
+  --verde: #39ff14;   /* Verde neón (Ajustado para el glow) */
+  --celeste: #00bfff; /* Azul neón (Ajustado para el glow) */
+
+  /* Variables para el Glow Avanzado */
+  --ultimate-shadow: 0 0 5px var(--celeste), 0 0 25px var(--verde), 0 0 50px var(--celeste);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ----------------------------------------------------------------------- */
+/* --- ESTILOS DE BOTONES AVANZADOS (ULTIMATE GLOW & SECONDARY) --- */
+/* ----------------------------------------------------------------------- */
+
+/* BOTÓN BASE (Simplificado) */
+.btn {
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* BOTÓN PRINCIPAL: Efecto Glow para máxima atención */
+.btn-ultimate-glow {
+    /* Fondo con gradiente de neón */
+    background: linear-gradient(135deg, var(--celeste), var(--verde));
+    color: #000;
+    border: none;
+    border-radius: 9999px; /* Botón píldora */
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+
+    /* El efecto glow */
+    box-shadow: var(--ultimate-shadow);
+    position: relative;
+    z-index: 10;
+}
+
+.btn-ultimate-glow:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 10px var(--celeste), 0 0 35px var(--verde), 0 0 70px var(--celeste);
+}
+
+/* BOTÓN SECUNDARIO */
+.btn-secondary {
+    background: transparent;
+    color: var(--verde);
+    border: 2px solid var(--verde);
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-secondary:hover {
+    background: rgba(57, 255, 20, 0.1);
+    color: #fff;
+}
+
+
+/* ----------------------------------------------------------------------- */
+/* --- ANIMACIÓN CRÍTICA DEL MARQUEE (Para que Marquee.tsx funcione) --- */
+/* ----------------------------------------------------------------------- */
+
+/* 🚨 ELIMINAMOS EL CÓDIGO @keyframes belt y .belt-track antiguo y lo reemplazamos con lo necesario */
+
+/* El carrusel ahora se anima con framer-motion (no necesita keyframes aquí),
+   pero estas reglas son buenas para mantener la consistencia */
+.marquee-track {
+    /* Asegura el funcionamiento de la animación con framer-motion */
+    white-space: nowrap;
+    display: flex;
+}
+
+/* ----------------------------------------------------------------------- */
+/* --- ESTILOS OBSOLETOS DEL HERO (SE DEJAN SIMPLIFICADOS) --- */
+/* ----------------------------------------------------------------------- */
+.hero-section-container {
+    /* Simplificado: Las dimensiones se manejan en Hero.tsx con min-h-screen */
+    background: #000000;
+    position: relative;
+}
+
+.hero-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* ... (Se pueden eliminar o simplificar las reglas de h1, p, pills) ... */

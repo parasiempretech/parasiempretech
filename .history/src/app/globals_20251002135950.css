@@ -1,0 +1,156 @@
+/* Sintaxis correcta para Tailwind CSS v4+ */
+@import "tailwindcss";
+
+/* Definición de variables globales */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Colores personalizados */
+  --verde: #10b981;
+  --celeste: #0ea5e9;
+}
+
+@media (pre-fers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* --- Estilos para los botones --- */
+.btn {
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.btn-glow {
+  background-color: var(--verde);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--foreground);
+}
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Aquí puedes agregar el resto de los estilos del Hero, etc. */
+/* --- Animación del Carrusel Superior (Belt) --- */
+@keyframes belt {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.belt {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  margin-bottom: 16px;
+}
+
+.belt-track {
+  display: flex;
+  gap: 26px;
+  padding: 8px 12px;
+  animation: belt 28s linear infinite;
+  white-space: nowrap;
+}
+
+.belt:hover .belt-track {
+  animation-play-state: paused;
+}
+.belt span {
+  font-size: 0.95rem;
+  color: var(--celeste);
+}
+
+/* --- Estilos del Contenedor del Hero --- */
+.hero-section-container {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 34px 26px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.02)
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 24px 64px rgba(16, 185, 129, 0.14);
+  margin-bottom: 26px;
+}
+
+.hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-content h1 {
+  margin: 14px 0 8px;
+  font-size: 2.8rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+}
+.hero-content p {
+  margin: 0 0 20px;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  max-width: 750px;
+}
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+}
+.pills li {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

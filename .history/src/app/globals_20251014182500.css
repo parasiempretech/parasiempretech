@@ -1,0 +1,103 @@
+/* src/app/globals.css */
+
+/* 1. SINTAXIS DE TAILWIND CSS */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* 2. DEFINICIÓN DE VARIABLES GLOBALES (SOLUCIÓN AL ERROR DE SINTAXIS) */
+:root {
+  /* 🚨 Corregido: Las propiedades están correctamente separadas */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Colores personalizados de Para Siempre Tech */
+  --verde: #39ff14;
+  --celeste: #00bfff;
+
+  /* Variables para el Glow Avanzado */
+  --ultimate-shadow: 0 0 5px var(--celeste), 0 0 25px var(--verde),
+    0 0 50px var(--celeste);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ----------------------------------------------------------------------- */
+/* --- ESTILOS DE BOTONES AVANZADOS --- */
+/* ----------------------------------------------------------------------- */
+
+.btn {
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-ultimate-glow {
+  background: linear-gradient(135deg, var(--celeste), var(--verde));
+  color: #000;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  box-shadow: var(--ultimate-shadow);
+  position: relative;
+  z-index: 10;
+}
+
+.btn-ultimate-glow:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 10px var(--celeste), 0 0 35px var(--verde),
+    0 0 70px var(--celeste);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--verde);
+  border: 2px solid var(--verde);
+  padding: 1rem 1.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background: rgba(57, 255, 20, 0.1);
+  color: #fff;
+}
+
+/* ----------------------------------------------------------------------- */
+/* --- ESTILOS DEL HERO (FINALES) --- */
+/* ----------------------------------------------------------------------- */
+
+.marquee-track {
+  white-space: nowrap;
+  display: flex;
+}
+
+.hero-section-container {
+  background: #000000;
+  position: relative;
+}
+
+.hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Reglas antiguas para asegurar el tamaño del H1 si no usa clases de Tailwind */
+.hero-content h1 {
+  margin: 14px 0 8px;
+  font-size: 2.8rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+}

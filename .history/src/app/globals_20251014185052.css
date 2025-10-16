@@ -1,0 +1,133 @@
+/* src/app/globals.css */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Definición de variables globales */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Colores personalizados */
+  --verde: #39ff14;   /* Neón verde ajustado para glow */
+  --celeste: #00bfff; /* Neón azul ajustado para glow */
+
+  /* Variables para el Glow Avanzado */
+  --ultimate-shadow: 0 0 5px var(--celeste), 0 0 25px var(--verde), 0 0 50px var(--celeste);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* --- Estilos para los botones --- */
+.btn {
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.btn-glow { /* Estilo anterior */
+  background-color: var(--verde);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+}
+
+/* 🚨 BOTÓN PRINCIPAL AVANZADO */
+.btn-ultimate-glow {
+    background: linear-gradient(135deg, var(--celeste), var(--verde));
+    color: #000;
+    border: none;
+    border-radius: 9999px; /* Píldora */
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    box-shadow: var(--ultimate-shadow);
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+.btn-ultimate-glow:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 10px var(--celeste), 0 0 35px var(--verde), 0 0 70px var(--celeste);
+}
+
+/* 🚨 BOTÓN SECUNDARIO */
+.btn-secondary {
+    background: transparent;
+    color: var(--verde);
+    border: 2px solid var(--verde);
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+.btn-secondary:hover {
+    background: rgba(57, 255, 20, 0.1);
+    color: #fff;
+}
+
+
+/* --- Animación del Carrusel SUPERIOR (TU CÓDIGO FUNCIONAL) --- */
+@keyframes belt {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.belt-wrapper { /* Clase de contenedor que el Marquee usará */
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.02)
+  );
+  margin-bottom: 16px;
+}
+
+.belt-track {
+  display: flex;
+  gap: 26px;
+  padding: 8px 12px;
+  animation: belt 28s linear infinite; /* Usamos tu animación original */
+  white-space: nowrap;
+}
+
+.belt-wrapper:hover .belt-track {
+  animation-play-state: paused;
+}
+
+.belt-item {
+  font-size: 0.95rem;
+  color: var(--celeste);
+}
+
+/* --- Estilos del Contenedor del Hero --- */
+.hero-section-container {
+  border-radius: 22px;
+  background: #000000;
+  /* Eliminamos padding/shadows para simplificar, se usan clases de Tailwind */
+}
+
+.hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Mantenemos tus estilos de texto h1/p antiguos, pero deben ser manejados por Tailwind */
